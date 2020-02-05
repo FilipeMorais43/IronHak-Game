@@ -17,11 +17,11 @@ class Character {
     this.x += 25;
   }
 
-  Score() {
+  score() {
     this.score += 1;
   }
   paint() {
-    const imageCharacter = './images/character.jpg';
+    const imageCharacter = './images/character.png';
     const image = new Image();
     image.src = imageCharacter;
 
@@ -29,6 +29,22 @@ class Character {
       this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
     });
     this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
+  }
+  setKeyboardEventListeners() {
+    window.addEventListener('keyup', event => {
+      switch (event.keyCode) {
+        case 37:
+          if (this.x > 150) {
+            this.moveLeft();
+          }
+          break;
+        case 39:
+          if (this.x < 755) {
+            this.moveRight();
+          }
+          break;
+      }
+    });
   }
   setKeyboardEventListeners() {
     window.addEventListener('keydown', event => {

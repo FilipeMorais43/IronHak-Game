@@ -5,19 +5,29 @@
     <title>All Eyes on Me</title>
   </head>
   <body>
-    <h1>All Eyes on Me!</h1>
-    <button type="button" id="buttonStart" onclick="initialize()">Start Game</button>
-    <div id="score">Score : 0</div>
-    <canvas width="1000" height="1000"> </canvas>
-    <!-- <script src="/badIconNutricionist.js"></script>
-    <script src="/goodIconNutricionist.js"></script>
-    <script src="/badIconGirlfirend.js"></script>
-    <script src="/goodIconGirlfriend.js"></script> -->
-    <script src="/alwaysBadIcon.js"></script>
-    <script src="/alwaysGoodIcon.js"></script>
-    <script src="/score.js"></script>
+    <section>
+      <canvas id="myCanvas" width="1000" height="1000"></canvas>
+      <div class="all-buttons">
+        <button id="start-button">Start Game</button>
+        <button id="reset">Reset Game</button>
+        <h2 id="score">Score: <span>0</span></h2>
+      </div>
+      <aside>  
+        <img src="./images/2pac.png" alt="2pac" class="logo-img" />
+        <figcaption>"Trust me I never lose. Either I win or I learn from it"</figcaption>
+        <br />
+        <img src="./images/arrows.png" alt="left and right key" id="arrows-img" />
+        <p class="instructions">
+          Catch all the items you can! BUT, if <strong> The Girlfriend</strong> 👀 you in contact with a 👱🏻‍♀, or <strong>The
+          Nutricionist</strong> 👀 you drinking 🍺 you lose. If they can't 👀 you, you can catch everything.
+          💰 always gives 1 point. 🚬 will give 1 point but you lose. <p class="instructions"> ⭐:If you get the ❤ while
+          Girlfriend is 👀 or 💧 while Nutricionist is 👀, you get 2 extra points!</p>
+        </p>
+      </aside>
+    </section>
     <script src="/nutricionist.js"></script>
     <script src="/girlfriend.js"></script>
+    <script src="/obstacles.js"></script>
     <script src="/character.js"></script>
     <script src="/game.js"></script>
     <script src="/main.js"></script>

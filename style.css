@@ -1,24 +1,108 @@
 body {
   font-size: 2em;
+  font-family: Arial;
+  background-image: url(./images/background2.JPG);
+  background-size: cover;
+  padding: 0;
+  text-align: center;
 }
 
 canvas {
   background-image: url(./images/background1.JPG);
   background-size: cover;
+  float: left;
+  padding: 20px 0px;
   border: 4px solid;
 }
 
-#buttonStart {
-  font-size: 20px;
-  position: absolute;
-  left: 110px;
-  top: 110px;
-  width: 200px;
-  height: 110px;
+.game-intro {
+  float: left;
+  padding: 0% 10%;
+  height: 100%;
+}
+
+.game-intro p {
+  font-size: 15px;
+}
+
+.logo-img {
+  width: 500px;
+}
+
+#arrows-img {
+  width: 150px;
+}
+
+#start-button {
+  font-size: 30px;
+  background-color: green;
+  color: white;
+  padding: 20px;
+  border: 3px solid black;
 }
 
 #score {
-  border: solid;
-  margin: 20px 1700px 20px 20px;
-  padding: 50px;
+  font-size: 30px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border: 3px solid white;
+  width: 145px;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  font-family: fantasy;
+  text-decoration: wavy;
+  font-size: 2em;
+}
+section {
+  display: flex;
+}
+aside {
+  display: flex;
+  padding: 0 1em;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.instructions {
+  font-size: 24px;
+  background-color: white;
+  color: black;
+  border: 3px solid black;
+  padding: 2px;
+}
+
+#reset {
+  font-size: 30px;
+  background-color: red;
+  color: white;
+  padding: 20px;
+  border: 3px solid black;
+  margin-top: 20px;
+}
+
+.all-buttons {
+  display: flex;
+  padding: 0 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameOver {
+  position: absolute;
+  visibility: hidden;
+}
+
+figcaption {
+  float: right;
+  font-family: cursive;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  color: silver;
+  text-decoration: underline;
 }
