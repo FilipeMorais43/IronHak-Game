@@ -61,25 +61,21 @@ class Game {
   }
 
   startGame() {
-    if (!this.amination) {
-      this.loop();
-    }
+    console.log('startBtn', this.gameIsRunning);
+    this.loop();
     this.instrumentalSound.play();
   }
 
   gameOver(reason) {
-    // option: should I clear canvas ? -> this.context.clearRect(0, 0, 1000, 1000);
-    this.endScreen();
-  }
-
-  endScreen(reason) {
-    if (reason === gf) {
+    if (reason === 'gf') {
       this.context.drawImage(this.gameOverGf, 250, 250, 500, 500);
-    } else if (reason === nt) {
+      console.log('im here');
+    } else if (reason === 'nt') {
       this.context.drawImage(this.gameOverNt, 250, 250, 500, 500);
-    } else {
+    } else if (reason === 'cigar') {
       this.context.drawImage(this.gameOverCigar, 250, 250, 500, 500);
     }
+    console.log(this.gameIsRunning);
   }
 
   paintWhiteRectangles = () => {
@@ -156,19 +152,19 @@ class Game {
       if (characterXW > obsX && characterX < obsXW && characterYH > obsY && characterY < obsYH) {
         if (this.obstacles[i].name === 'cigarettes') {
           this.gameIsRunning = false;
-          this.gameOver(cigar);
+          this.gameOver('cigar');
           this.instrumentalSound.pause();
           this.marlboroSound.play();
           // show game over image1
         } else if (this.girlfriend.looking === true && this.obstacles[i].name === 'alba') {
           this.gameIsRunning = false;
-          this.gameOver(gf);
+          this.gameOver('gf');
           this.instrumentalSound.pause();
           this.sorrySound.play();
           //show game over image2
         } else if (this.nutricionist.looking === true && this.obstacles[i].name === 'beer') {
           this.gameIsRunning = false;
-          this.gameOver(nt);
+          this.gameOver('nt');
           this.instrumentalSound.pause();
           this.sorrySound.play();
           //show game over image2
