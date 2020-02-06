@@ -1,10 +1,10 @@
 class Nutricionist {
   constructor(game) {
     this.game = game;
-    this.x = 850;
-    this.y = 750;
-    this.width = 150;
-    this.height = 150;
+    this.x = 680;
+    this.y = 600;
+    this.width = 130;
+    this.height = 130;
     this.looking = true;
   }
   paint() {

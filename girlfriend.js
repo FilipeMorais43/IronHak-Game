@@ -2,9 +2,9 @@ class Girlfriend {
   constructor(game) {
     this.game = game;
     this.x = 0;
-    this.y = 750;
-    this.width = 150;
-    this.height = 150;
+    this.y = 600;
+    this.width = 120;
+    this.height = 130;
     this.looking = true;
   }
   paint() {

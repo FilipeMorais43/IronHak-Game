@@ -30,7 +30,7 @@ canvas {
 }
 
 #arrows-img {
-  width: 150px;
+  width: 120px;
 }
 
 #start-button {
@@ -105,4 +105,8 @@ figcaption {
   text-indent: 0;
   color: silver;
   text-decoration: underline;
+}
+
+.hidden {
+  display: none;
 }

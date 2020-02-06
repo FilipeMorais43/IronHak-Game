@@ -43,7 +43,7 @@ class Obstacles {
     this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
   }
   setRandomPosition() {
-    this.x = 220 + Math.random() * 570;
+    this.x = 176 + Math.random() * 456;
   }
 
   setRandomObject() {
@@ -53,6 +53,6 @@ class Obstacles {
   }
 
   runLogic() {
-    this.y += 3;
+    this.y += 5;
   }
 }

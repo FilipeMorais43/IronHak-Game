@@ -2,7 +2,7 @@ class Game {
   constructor($canvas) {
     this.$canvas = $canvas;
     this.context = this.$canvas.getContext('2d');
-    this.gameIsRunning = true;
+    this.gameIsRunning = false;
     this.$scoreNode = document.getElementById('score');
     this.obstacles = [];
     this.character = new Character(this);
@@ -11,7 +11,7 @@ class Game {
     this.time = 0;
     this.girlfriendTimer = 0;
     this.nutricionistTimer = 0;
-    this.speed = 1000 + Math.random() * 3000;
+    this.speed = 500 + Math.random() * 1000;
     this.girlfriendSpeed = 5000 + Math.random() * 4000;
     this.nutricionistSpeed = 5000 + Math.random() * 4000;
     this.score = 0;
@@ -39,11 +39,11 @@ class Game {
     this.loopnum = 0;
   }
   drawTitle() {
-    this.context.font = '70px fantasy';
-    this.context.fillText('All 👀 on Me!', 300, 100, 820, 800);
+    this.context.font = '54px fantasy';
+    this.context.fillText('All 👀 on Me!', 260, 80, 656, 640);
   }
   reset() {
-    this.gameIsRunning = false;
+    //this.gameIsRunning = false;
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
     this.score = 0;
     this.$scoreNode.innerHTML = 'Score : ' + this.score;
@@ -54,38 +54,44 @@ class Game {
     this.time = 0;
     this.girlfriendTimer = 0;
     this.nutricionistTimer = 0;
-    this.speed = 1000 + Math.random() * 3000;
+    this.speed = 500 + Math.random() * 1000;
     this.girlfriendSpeed = 5000 + Math.random() * 4000;
     this.nutricionistSpeed = 5000 + Math.random() * 4000;
-    this.gameIsRunning = true;
+
+    if (!this.gameIsRunning) {
+      this.loop();
+      this.startGame();
+      this.gameIsRunning = true;
+    } else {
+      delete this.animation;
+    }
   }
 
   startGame() {
     console.log('startBtn', this.gameIsRunning);
-    this.loop();
     this.instrumentalSound.play();
+    this.gameIsRunning = true;
   }
 
   gameOver(reason) {
     if (reason === 'gf') {
-      this.context.drawImage(this.gameOverGf, 250, 250, 500, 500);
+      this.context.drawImage(this.gameOverGf, 200, 200, 400, 400);
       console.log('im here');
     } else if (reason === 'nt') {
-      this.context.drawImage(this.gameOverNt, 250, 250, 500, 500);
+      this.context.drawImage(this.gameOverNt, 200, 200, 400, 400);
     } else if (reason === 'cigar') {
-      this.context.drawImage(this.gameOverCigar, 250, 250, 500, 500);
+      this.context.drawImage(this.gameOverCigar, 200, 200, 400, 400);
     }
-    console.log(this.gameIsRunning);
   }
 
   paintWhiteRectangles = () => {
     this.context.fillStyle = 'black';
-    this.context.fillRect(0, 745, 155, 160);
+    this.context.fillRect(0, 595, 124, 128);
     this.context.fillStyle = 'black';
-    this.context.fillRect(845, 745, 155, 160);
+    this.context.fillRect(676, 595, 124, 128);
     this.context.stroke();
     this.context.font = '70px fantasy';
-    this.context.fillText('All 👀 on Me!', 300, 100, 820, 800);
+    this.context.fillText('All 👀 on Me!', 240, 80, 656, 640);
   };
 
   draweverything() {
@@ -104,7 +110,7 @@ class Game {
   }
 
   loop(timestamp) {
-    this.amination = window.requestAnimationFrame(timestamp => {
+    this.animation = window.requestAnimationFrame(timestamp => {
       if (this.gameIsRunning) {
         this.loop(timestamp);
       }
