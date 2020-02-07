@@ -3,20 +3,29 @@ class Character {
     this.game = game;
     this.x = 360;
     this.y = 620;
-    this.width = 80;
-    this.height = 180;
+    this.width = 90;
+    this.height = 160;
     this.score = 0;
     this.setKeyboardEventListeners();
     this.imageCharacter = new Image();
     this.imageCharacter.src = './images/character.png';
+    this.speed = 0;
   }
 
-  moveLeft(left) {
-    this.x -= 22;
+  moveLeft() {
+    this.speed = -3;
   }
 
-  moveRight(right) {
-    this.x += 22;
+  moveRight() {
+    this.speed = 3;
+  }
+
+  updateMove() {
+    if (this.x > 120 && this.x < 590) {
+      this.x += this.speed;
+    } else {
+      this.speed = 0;
+    }
   }
 
   score() {
@@ -29,33 +38,15 @@ class Character {
     this.game.context.drawImage(this.imageCharacter, this.x, this.y, this.width, this.height);
   }
   setKeyboardEventListeners() {
-    window.addEventListener('keyup', event => {
-      switch (event.keyCode) {
-        case 37:
-          if (this.x > 120) {
-            this.moveLeft();
-          }
-          break;
-        case 39:
-          if (this.x < 604) {
-            this.moveRight();
-          }
-          break;
-      }
-    });
-  }
-  setKeyboardEventListeners() {
     window.addEventListener('keydown', event => {
       switch (event.keyCode) {
         case 37:
-          if (this.x > 120) {
-            this.moveLeft();
-          }
+          this.moveLeft();
+          this.x += this.speed;
           break;
         case 39:
-          if (this.x < 590) {
-            this.moveRight();
-          }
+          this.moveRight();
+          this.x += this.speed;
           break;
       }
     });

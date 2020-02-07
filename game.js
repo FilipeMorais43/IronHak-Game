@@ -43,7 +43,6 @@ class Game {
     this.context.fillText('All 👀 on Me!', 260, 80, 656, 640);
   }
   reset() {
-    //this.gameIsRunning = false;
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
     this.score = 0;
     this.$scoreNode.innerHTML = 'Score : ' + this.score;
@@ -67,7 +66,6 @@ class Game {
   }
 
   startGame() {
-    console.log('startBtn', this.gameIsRunning);
     this.instrumentalSound.play();
     this.gameIsRunning = true;
   }
@@ -75,7 +73,6 @@ class Game {
   gameOver(reason) {
     if (reason === 'gf') {
       this.context.drawImage(this.gameOverGf, 200, 200, 400, 400);
-      console.log('im here');
     } else if (reason === 'nt') {
       this.context.drawImage(this.gameOverNt, 200, 200, 400, 400);
     } else if (reason === 'cigar') {
@@ -138,6 +135,7 @@ class Game {
       const obs = new Obstacles(this);
       this.obstacles = [...this.obstacles, obs];
     }
+    this.character.updateMove();
     this.runLogic();
     this.draweverything();
   }
@@ -160,19 +158,16 @@ class Game {
           this.gameOver('cigar');
           this.instrumentalSound.pause();
           this.marlboroSound.play();
-          // show game over image1
         } else if (this.girlfriend.looking === true && this.obstacles[i].name === 'alba') {
           this.gameIsRunning = false;
           this.gameOver('gf');
           this.instrumentalSound.pause();
           this.sorrySound.play();
-          //show game over image2
         } else if (this.nutricionist.looking === true && this.obstacles[i].name === 'beer') {
           this.gameIsRunning = false;
           this.gameOver('nt');
           this.instrumentalSound.pause();
           this.sorrySound.play();
-          //show game over image2
         } else if (this.girlfriend.looking === true && this.obstacles[i].name === 'love') {
           this.score += 2;
           this.loveSound.play();
