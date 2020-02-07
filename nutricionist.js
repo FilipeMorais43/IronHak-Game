@@ -6,17 +6,18 @@ class Nutricionist {
     this.width = 130;
     this.height = 130;
     this.looking = true;
+
+    this.imageNutriLook = new Image();
+    this.imageNutriLook.src = './images/nutrilook.jpg';
+
+    this.imageNutriNoLook = new Image();
+    this.imageNutriNoLook.src = './images/nutrinolook.jpg';
   }
   paint() {
-    const image = new Image();
     if (this.looking) {
-      const imageNutriLook = './images/nutrilook.jpg';
-      image.src = imageNutriLook;
-      this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
+      this.game.context.drawImage(this.imageNutriLook, this.x, this.y, this.width, this.height);
     } else {
-      const imageNutriNoLook = './images/nutrinolook.jpg';
-      image.src = imageNutriNoLook;
-      this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
+      this.game.context.drawImage(this.imageNutriNoLook, this.x, this.y, this.width, this.height);
     }
   }
 }

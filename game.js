@@ -61,7 +61,6 @@ class Game {
     if (!this.gameIsRunning) {
       this.loop();
       this.startGame();
-      this.gameIsRunning = true;
     } else {
       delete this.animation;
     }
@@ -156,7 +155,7 @@ class Game {
       const obsYH = this.obstacles[i].y + this.obstacles[i].height;
 
       if (characterXW > obsX && characterX < obsXW && characterYH > obsY && characterY < obsYH) {
-        if (this.obstacles[i].name === 'cigarettes') {
+        if (this.obstacles[i].name === 'marlboro') {
           this.gameIsRunning = false;
           this.gameOver('cigar');
           this.instrumentalSound.pause();

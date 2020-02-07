@@ -3,10 +3,12 @@ class Character {
     this.game = game;
     this.x = 360;
     this.y = 620;
-    this.width = 64;
+    this.width = 80;
     this.height = 180;
     this.score = 0;
     this.setKeyboardEventListeners();
+    this.imageCharacter = new Image();
+    this.imageCharacter.src = './images/character.png';
   }
 
   moveLeft(left) {
@@ -21,14 +23,10 @@ class Character {
     this.score += 1;
   }
   paint() {
-    const imageCharacter = './images/character.png';
-    const image = new Image();
-    image.src = imageCharacter;
-
-    image.addEventListener('load', () => {
-      this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
+    this.imageCharacter.addEventListener('load', () => {
+      this.game.context.drawImage(this.imageCharacter, this.x, this.y, this.width, this.height);
     });
-    this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
+    this.game.context.drawImage(this.imageCharacter, this.x, this.y, this.width, this.height);
   }
   setKeyboardEventListeners() {
     window.addEventListener('keyup', event => {
@@ -55,7 +53,7 @@ class Character {
           }
           break;
         case 39:
-          if (this.x < 604) {
+          if (this.x < 590) {
             this.moveRight();
           }
           break;

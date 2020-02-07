@@ -1,3 +1,21 @@
+const imageMoney = new Image();
+imageMoney.src = './images/money.png';
+
+const imageMarlboro = new Image();
+imageMarlboro.src = './images/marlboro.png';
+
+const imageLove = new Image();
+imageLove.src = './images/love.png';
+
+const imageWater = new Image();
+imageWater.src = './images/water.png';
+
+const imageAlba = new Image();
+imageAlba.src = './images/alba.png';
+
+const imageBeer = new Image();
+imageBeer.src = './images/beer.png';
+
 class Obstacles {
   constructor(game) {
     this.game = game;
@@ -8,48 +26,30 @@ class Obstacles {
     this.width = 40;
     this.height = 40;
     this.setRandomPosition();
-    this.options = [
-      {
-        name: 'money',
-        img: './images/money.png'
-      },
-      {
-        name: 'cigarettes',
-        img: './images/marlboro.png'
-      },
-      {
-        name: 'love',
-        img: './images/love.png'
-      },
-      {
-        name: 'water',
-        img: './images/water.png'
-      },
-      {
-        name: 'alba',
-        img: './images/alba.png'
-      },
-      {
-        name: 'beer',
-        img: './images/beer.png'
-      }
-    ];
+    this.options = {
+      money: imageMoney,
+      marlboro: imageMarlboro,
+      love: imageLove,
+      water: imageWater,
+      alba: imageAlba,
+      beer: imageBeer
+    };
     this.setRandomObject();
   }
+
   paint() {
-    const imageURL = this.img;
-    const image = new Image();
-    image.src = imageURL;
+    const image = this.options[this.name];
     this.game.context.drawImage(image, this.x, this.y, this.width, this.height);
   }
+
   setRandomPosition() {
     this.x = 176 + Math.random() * 456;
   }
 
   setRandomObject() {
     let n = Math.floor(Math.random() * 6);
-    this.name = this.options[n].name;
-    this.img = this.options[n].img;
+    const optionNames = Object.keys(this.options);
+    this.name = optionNames[n];
   }
 
   runLogic() {
